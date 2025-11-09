@@ -12,6 +12,25 @@ dist
 dist-ssr
 *.local
 
+# Environment variables
+.env
+.env.local
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+
+# Storage
+complaints_store.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -25,6 +44,3 @@ dist-ssr
 
 # Service account and secrets
 service_account.json
-.env
-.env.local
-.env.production
