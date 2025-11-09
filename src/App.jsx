@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './App.css';
-
+//ek change
 // Landing & Auth Pages
 import Landing from './pages/Landing';
 import StudentLogin from './pages/auth/StudentLogin';
@@ -14,9 +14,12 @@ import StudentDashboard from './pages/student/StudentDashboard';
 import StudentMess from './pages/student/StudentMess';
 import StudentTransport from './pages/student/StudentTransport';
 import StudentCarpool from './pages/student/StudentCarpool';
+import StudentMaintenance from './pages/student/StudentMaintenance';
+import StudentNetwork from './pages/student/StudentNetwork';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminComplaintManagement from './pages/admin/AdminComplaintManagement';
 
 // Driver Pages
 import DriverDashboard from './pages/driver/DriverDashboard';
@@ -47,7 +50,7 @@ function App() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/driver/login" element={<DriverLogin />} />
 
-        {/* Student Protected Routes */}
+        {/* Student Protected Routes - All 5 sections */}
         <Route
           path="/student/dashboard"
           element={
@@ -73,10 +76,10 @@ function App() {
           }
         />
         <Route
-          path="/student/carpool"
+          path="/student/maintenance"
           element={
             <ProtectedRoute allowedRoles={['student']}>
-              <StudentCarpool />
+              <StudentMaintenance />
             </ProtectedRoute>
           }
         />
@@ -84,28 +87,20 @@ function App() {
           path="/student/network"
           element={
             <ProtectedRoute allowedRoles={['student']}>
-              <StudentMess />
+              <StudentNetwork />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/student/housekeeping"
+          path="/student/carpool"
           element={
             <ProtectedRoute allowedRoles={['student']}>
-              <StudentMess />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student/water"
-          element={
-            <ProtectedRoute allowedRoles={['student']}>
-              <StudentMess />
+              <StudentCarpool />
             </ProtectedRoute>
           }
         />
 
-        {/* Admin Protected Routes */}
+        {/* Admin Protected Routes - All except Carpool */}
         <Route
           path="/admin/dashboard"
           element={
@@ -115,49 +110,25 @@ function App() {
           }
         />
         <Route
-          path="/admin/mess"
+          path="/admin/:dept"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/transport"
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/network"
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/housekeeping"
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/water"
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <AdminDashboard />
+              <AdminComplaintManagement />
             </ProtectedRoute>
           }
         />
 
-        {/* Driver Protected Routes */}
+        {/* Driver Protected Routes - Only Carpool */}
         <Route
           path="/driver/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['driver']}>
+              <DriverDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/driver/carpool"
           element={
             <ProtectedRoute allowedRoles={['driver']}>
               <DriverDashboard />

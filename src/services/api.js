@@ -397,6 +397,65 @@ export const scheduleAPI = {
   }
 };
 
+// ==================== MESS TIMETABLE APIs ====================
+
+export const messTimetableAPI = {
+  // Upload mess timetable (admin only)
+  uploadMessTimetable: async (file, uploadedBy) => {
+    // TODO: Replace with actual API call to upload file
+    // In production, this should use FormData to upload the file
+    // const formData = new FormData();
+    // formData.append('file', file);
+    // formData.append('uploaded_by', uploadedBy);
+    // return await fetch('/api/mess/timetable/upload', { method: 'POST', body: formData });
+    
+    console.log('Uploading timetable:', file.name, 'by:', uploadedBy);
+    
+    return {
+      success: true,
+      data: {
+        timetable_id: 'TT_' + Date.now(),
+        filename: file.name,
+        file_url: URL.createObjectURL(file), // Mock URL for local preview
+        uploaded_by: uploadedBy,
+        uploaded_at: new Date().toISOString(),
+        is_current: true
+      }
+    };
+  },
+
+  // Get current mess timetable
+  getCurrentMessTimetable: async () => {
+    // TODO: Replace with actual API call
+    // return await fetch('/api/mess/timetable/current');
+    
+    return {
+      success: true,
+      data: {
+        timetable_id: 'TT_001',
+        filename: 'Mess_Timetable_November_2025.pdf',
+        file_url: '/mess-menu.pdf', // This should point to actual uploaded file
+        uploaded_by: 'admin_123',
+        uploaded_at: '2025-11-01T10:00:00Z',
+        is_current: true
+      }
+    };
+  },
+
+  // Delete mess timetable (admin only)
+  deleteMessTimetable: async (timetableId) => {
+    // TODO: Replace with actual API call
+    // return await fetch(`/api/mess/timetable/${timetableId}`, { method: 'DELETE' });
+    
+    console.log('Deleting timetable:', timetableId);
+    
+    return {
+      success: true,
+      message: 'Timetable deleted successfully'
+    };
+  }
+};
+
 // ==================== DRIVER APIs ====================
 
 export const driverAPI = {
