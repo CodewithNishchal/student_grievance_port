@@ -1,0 +1,273 @@
+[
+  {
+    "id": 1762696135550,
+    "student_view": {
+      "complaint": "water\n\ntap is leak",
+      "timestamp": "2025-11-09T19:18:53.364530",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T19:18:53.364530",
+      "severity": 2,
+      "summary": "The tap is leaking.",
+      "complaint": "water\n\ntap is leak",
+      "departments": [
+        "Maintenance",
+        "Drinking Water"
+      ],
+      "contacts": {
+        "Maintenance": "maintenance@iiit-nagpur.ac.in",
+        "Drinking Water": "water@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I'm so sorry to hear that you're facing an issue with a leaking tap. While our Maintenance department reviews your complaint, here are a few suggestions that might help:",
+        "Please try to report the exact location of the leaking tap to our Maintenance team, including the building and room number, so they can prioritize and address the issue as soon as possible.",
+        "If the leak is causing water to accumulate on the floor, you may want to inform your neighboring students to be cautious when walking in the area to avoid any accidents or slips.",
+        "In the meantime, if you need access to a functional tap for drinking water or other purposes, you can consider using a tap in a nearby common area or a different floor, if available.",
+        "I'm so sorry to hear that you're facing an issue with a leaky tap. While our Drinking Water department reviews your complaint, here are some suggestions that might help:",
+        "Please try to report the exact location of the leaky tap to our facilities team, so they can prioritize and expedite the repair work.",
+        "If the leak is causing water to spill on the floor, you can inform your nearby hostel or block authorities to arrange for a temporary mop-up or cleaning to prevent any accidents.",
+        "You can also consider informing your fellow students about the leaky tap, so they can be mindful of the issue and report any further problems to the authorities."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding The tap is leaking.. It is rated 2/5 in severity and forwarded to the Maintenance, Drinking Water department(s)."
+    }
+  },
+  {
+    "id": 1762696232953,
+    "student_view": {
+      "complaint": "as\n\nnischa l is aa ghaddha ladka jo ek baar mai sunta nhi hai",
+      "timestamp": "2025-11-09T19:20:31.413521",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T19:20:31.413521",
+      "severity": 1,
+      "summary": "Nischa is a stubborn and disobedient boy.",
+      "complaint": "as\n\nnischa l is aa ghaddha ladka jo ek baar mai sunta nhi hai",
+      "departments": [
+        "Academics / Registrar"
+      ],
+      "contacts": {
+        "Academics / Registrar": "academics@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I understand your concern, and I'm here to help. While the Academics / Registrar department reviews your complaint, here are some suggestions you can consider:",
+        "Document specific incidents: Try to keep a record of instances where you felt Nischa L didn't listen to you or was uncooperative. Note down the dates, times, and details of what happened. This will be helpful when discussing the issue with the department.",
+        "Talk to your mentor or counselor: Reach out to your assigned mentor or counselor and share your concerns with them. They may be able to offer guidance or support, and can also help facilitate a resolution.",
+        "Focus on your academic goals: Remember that your academic progress is important, and try not to let this issue affect your studies. Stay focused on your goals, and prioritize your assignments and projects."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding Nischa is a stubborn and disobedient boy.. It is rated 1/5 in severity and forwarded to the Academics / Registrar department(s)."
+    }
+  },
+  {
+    "id": 1762703878480,
+    "student_view": {
+      "complaint": "speed very slow",
+      "timestamp": "2025-11-09T21:27:53.669082",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T21:27:53.669082",
+      "severity": 2,
+      "summary": "Movement is slow.",
+      "complaint": "speed very slow",
+      "departments": [
+        "Network & IT"
+      ],
+      "contacts": {
+        "Network & IT": "it@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I'm so sorry to hear that you're experiencing slow internet speeds. While our Network & IT department reviews your complaint, here are some suggestions that might help:",
+        "Try restarting your device and router to ensure that it's not a simple connectivity issue that can be resolved with a quick reboot.",
+        "Check if there are any software updates available for your device, as outdated software can sometimes cause slow internet speeds, and installing the latest updates might improve your browsing experience.",
+        "Consider switching to a different network access point or moving to a location with better network coverage, as physical barriers or interference from other devices can affect your internet speed."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding Movement is slow.. It is rated 2/5 in severity and forwarded to the Network & IT department(s)."
+    }
+  },
+  {
+    "id": 1762704132019,
+    "student_view": {
+      "complaint": "lan not working",
+      "timestamp": "2025-11-09T21:32:10.679143",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T21:32:10.679143",
+      "severity": 4,
+      "summary": "The internet is not working.",
+      "complaint": "lan not working",
+      "departments": [
+        "Network & IT"
+      ],
+      "contacts": {
+        "Network & IT": "it@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I'm so sorry to hear that you're facing issues with the LAN connection. While our Network & IT department reviews your complaint, here are some suggestions that might help you in the meantime:",
+        "Try restarting your device and the LAN port to see if it resolves the issue, as sometimes a simple reboot can fix connectivity problems.",
+        "Check if the LAN cable is properly connected to both your device and the wall socket, and ensure that the cable is not damaged, as a loose or damaged cable can cause connection issues.",
+        "If you're using a Wi-Fi router or a LAN extender, try bypassing it and connect your device directly to the wall socket to isolate the problem and determine if the issue is with the router or the LAN connection itself."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding The internet is not working.. It is rated 4/5 in severity and forwarded to the Network & IT department(s)."
+    }
+  },
+  {
+    "id": 1762704164065,
+    "student_view": {
+      "complaint": "sasa",
+      "timestamp": "2025-11-09T21:32:43.493610",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T21:32:43.493610",
+      "severity": 1,
+      "summary": "The word \"sasa\" has no clear meaning or context.",
+      "complaint": "sasa",
+      "departments": [],
+      "contacts": {},
+      "suggestions": [],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding The word \"sasa\" has no clear meaning or context.. It is rated 1/5 in severity and forwarded to the relevant department department(s)."
+    }
+  },
+  {
+    "id": 1762708420017,
+    "student_view": {
+      "complaint": "saxdas",
+      "timestamp": "2025-11-09T22:43:35.386888",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T22:43:35.386888",
+      "severity": 1,
+      "summary": "The text \"saxdas\" is a meaningless string of characters.",
+      "complaint": "saxdas",
+      "departments": [],
+      "contacts": {},
+      "suggestions": [],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding The text \"saxdas\" is a meaningless string of characters.. It is rated 1/5 in severity and forwarded to the relevant department department(s)."
+    }
+  },
+  {
+    "id": 1762709928262,
+    "student_view": {
+      "complaint": "sadas",
+      "timestamp": "2025-11-09T23:08:43.924554",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T23:08:43.924554",
+      "severity": 1,
+      "summary": "No information is provided.",
+      "complaint": "sadas",
+      "departments": [],
+      "contacts": {},
+      "suggestions": [],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding No information is provided.. It is rated 1/5 in severity and forwarded to the relevant department department(s)."
+    }
+  },
+  {
+    "id": 1762709970218,
+    "student_view": {
+      "complaint": "lan not working",
+      "timestamp": "2025-11-09T23:09:29.092626",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T23:09:29.092626",
+      "severity": 4,
+      "summary": "Internet is not working.",
+      "complaint": "lan not working",
+      "departments": [
+        "Network & IT"
+      ],
+      "contacts": {
+        "Network & IT": "it@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I'm so sorry to hear that you're facing issues with the LAN connection. While our Network & IT department reviews your complaint, here are a few suggestions that might help:",
+        "Try restarting your device and the LAN port to see if it resolves the issue, as sometimes a simple reboot can get things working again.",
+        "Check if the LAN cable is properly connected to both your device and the port, and ensure that there are no physical damages or bends in the cable that could be causing the disruption.",
+        "If you're using a switch or a router, try connecting your device directly to the LAN port to rule out any issues with the intermediate devices."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding Internet is not working.. It is rated 4/5 in severity and forwarded to the Network & IT department(s)."
+    }
+  },
+  {
+    "id": 1762710042522,
+    "student_view": {
+      "complaint": "dogs were licking food plates",
+      "timestamp": "2025-11-09T23:10:40.286504",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T23:10:40.286504",
+      "severity": 4,
+      "summary": "Dogs were licking dirty plates.",
+      "complaint": "dogs were licking food plates",
+      "departments": [
+        "Mess & Dining",
+        "Housekeeping"
+      ],
+      "contacts": {
+        "Mess & Dining": "mess@iiit-nagpur.ac.in",
+        "Housekeeping": "housekeeping@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I'm so sorry to hear that you're facing this issue in the mess. I completely understand how unhygienic and uncomfortable it can be. While the Mess & Dining department reviews your complaint, here are some suggestions that might help:",
+        "Please try to avoid leaving your food plates unattended on the tables, as this might be attracting the dogs. Instead, dispose of your waste properly in the designated bins and return your plates to the counter immediately after use.",
+        "If you see any dogs entering the mess, you can inform the mess staff or security personnel on duty, so they can take immediate action to shoo them away and prevent any further incidents.",
+        "Consider speaking with your fellow students and raising awareness about the importance of maintaining cleanliness and not feeding dogs in the mess area, as this might be encouraging them to linger around.",
+        "I'm so sorry to hear that you're facing this issue. I'm here to help and support you. While the Housekeeping department reviews your complaint, here are some suggestions that may help:",
+        "Please make sure to dispose of your food waste and plates in the designated bins to avoid attracting dogs to the area.",
+        "If you see dogs near the dining or common areas, you can inform the security personnel on duty, and they will help shoo them away.",
+        "Consider using the indoor dining spaces or covered areas where dogs are less likely to enter, and you can enjoy your meals without any disturbance."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding Dogs were licking dirty plates.. It is rated 4/5 in severity and forwarded to the Mess & Dining, Housekeeping department(s)."
+    }
+  },
+  {
+    "id": 1762710095721,
+    "student_view": {
+      "complaint": "fix clogged toilets",
+      "timestamp": "2025-11-09T23:11:33.281783",
+      "status": "Pending"
+    },
+    "admin_view": {
+      "timestamp": "2025-11-09T23:11:33.281783",
+      "severity": 4,
+      "summary": "Use a plunger or plumbing snake to unclog a toilet.",
+      "complaint": "fix clogged toilets",
+      "departments": [
+        "Housekeeping",
+        "Maintenance"
+      ],
+      "contacts": {
+        "Housekeeping": "housekeeping@iiit-nagpur.ac.in",
+        "Maintenance": "maintenance@iiit-nagpur.ac.in"
+      },
+      "suggestions": [
+        "I understand how frustrating it can be to deal with clogged toilets. While the Housekeeping department reviews your complaint, here are some suggestions that might help:",
+        "Please inform your friends and classmates about the issue so they can avoid using the clogged toilets and prevent any further damage or mess.",
+        "If there are other functional toilets nearby, you can use those as an alternative until the clogged ones are fixed, and we'll make sure to prioritize the repair work.",
+        "You can also consider speaking with your hostel warden or floor representative to report the issue and get an update on when the Housekeeping team is expected to arrive and fix the problem.",
+        "I completely understand the inconvenience caused by clogged toilets, and I'm here to help. While the Maintenance department reviews your complaint, here are some suggestions that may help:",
+        "If the clog is minor, you can try using a plunger or a toilet auger to clear the blockage yourself, but please be cautious and avoid using excessive force that might damage the toilet.",
+        "In the meantime, you can use the toilets in other hostels or buildings on campus, and I can provide you with a map or directions to the nearest available facilities if needed.",
+        "If you're experiencing any health concerns due to the unhygienic conditions, please don't hesitate to reach out to our campus medical team for assistance, and they'll be happy to provide you with guidance and support."
+      ],
+      "institute": "IIIT Nagpur",
+      "officer_brief": "A student complaint has been received regarding Use a plunger or plumbing snake to unclog a toilet.. It is rated 4/5 in severity and forwarded to the Housekeeping, Maintenance department(s)."
+    }
+  }
+]
