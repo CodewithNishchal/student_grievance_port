@@ -31,18 +31,11 @@ const StudentDashboard = () => {
       className: 'network',
     },
     {
-      name: 'Housekeeping',
-      icon: 'fa-broom',
-      description: 'Request cleaning services and report maintenance issues',
-      route: '/student/housekeeping',
-      className: 'housekeeping',
-    },
-    {
-      name: 'Drinking Water',
-      icon: 'fa-tint',
-      description: 'Report water quality issues and cooler malfunctions',
-      route: '/student/water',
-      className: 'water',
+      name: 'Maintenance',
+      icon: 'fa-tools',
+      description: 'Request cleaning, water, and facility maintenance services',
+      route: '/student/maintenance',
+      className: 'maintenance',
     },
     {
       name: 'Carpool',

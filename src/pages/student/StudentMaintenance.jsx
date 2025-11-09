@@ -3,49 +3,37 @@ import { useSelector } from 'react-redux';
 import Navbar from '../../components/shared/Navbar';
 import Footer from '../../components/shared/Footer';
 import Modal from '../../components/shared/Modal';
-import { complaintAPI, messTimetableAPI } from '../../services/api';
+import { complaintAPI } from '../../services/api';
 
-const StudentMess = () => {
+const StudentMaintenance = () => {
   const { user } = useSelector((state) => state.auth);
   const [showComplaintModal, setShowComplaintModal] = useState(false);
   const [myComplaints, setMyComplaints] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentTimetable, setCurrentTimetable] = useState(null);
 
   const [complaintForm, setComplaintForm] = useState({
     title: '',
     description: '',
     severity: 'medium',
     media: null,
+    category: 'housekeeping',
   });
 
   useEffect(() => {
     loadComplaints();
-    loadCurrentTimetable();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadComplaints = async () => {
     try {
       const response = await complaintAPI.getMyComplaints(user?.user_id);
       if (response.success) {
-        setMyComplaints(response.data.filter((c) => c.dept_id === 'MESS'));
+        // Filter for MAINTENANCE, HOUSEKEEPING, or WATER dept_id
+        setMyComplaints(response.data.filter((c) => 
+          ['MAINTENANCE', 'HOUSEKEEPING', 'WATER'].includes(c.dept_id)
+        ));
       }
     } catch {
       // Handle error
-    }
-  };
-
-  const loadCurrentTimetable = async () => {
-    try {
-      const response = await messTimetableAPI.getCurrentMessTimetable();
-      if (response.success && response.data) {
-        setCurrentTimetable(response.data);
-      }
-    } catch (error) {
-      console.error('Failed to load timetable:', error);
-      // Set to null if error, will show fallback message
-      setCurrentTimetable(null);
     }
   };
 
@@ -59,7 +47,7 @@ const StudentMess = () => {
         title: complaintForm.title,
         description: complaintForm.description,
         severity: complaintForm.severity,
-        dept_id: 'MESS',
+        dept_id: 'MAINTENANCE',
       };
 
       const response = await complaintAPI.createComplaint(complaintData);
@@ -73,6 +61,7 @@ const StudentMess = () => {
           description: '',
           severity: 'medium',
           media: null,
+          category: 'housekeeping',
         });
       }
     } catch {
@@ -106,87 +95,131 @@ const StudentMess = () => {
       <div className="page-container">
         <div className="page-content">
           <div className="page-header">
-            <i className="fas fa-utensils"></i>
+            <i className="fas fa-tools"></i>
             <div>
-              <h1>Mess Management</h1>
-              <p>Timings, menus, and complaint management</p>
+              <h1>Maintenance Services</h1>
+              <p>Housekeeping, water supply, and facility maintenance</p>
             </div>
           </div>
 
-          {/* Mess Timings */}
+          {/* Housekeeping Services */}
           <div className="content-card">
             <h2>
-              <i className="fas fa-clock"></i> Mess Timings
+              <i className="fas fa-broom"></i> Housekeeping Services
             </h2>
             <table>
               <thead>
                 <tr>
-                  <th>Meal</th>
-                  <th>Weekdays</th>
-                  <th>Weekends</th>
+                  <th>Area</th>
+                  <th>Frequency</th>
+                  <th>Timings</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Breakfast</strong></td>
-                  <td>7:30 AM - 9:30 AM</td>
-                  <td>8:00 AM - 10:00 AM</td>
+                  <td><strong>Hostel Rooms</strong></td>
+                  <td>Daily</td>
+                  <td>9:00 AM - 12:00 PM</td>
                 </tr>
                 <tr>
-                  <td><strong>Lunch</strong></td>
-                  <td>12:30 PM - 2:30 PM</td>
-                  <td>12:30 PM - 2:30 PM</td>
+                  <td><strong>Corridors</strong></td>
+                  <td>Twice Daily</td>
+                  <td>8:00 AM & 6:00 PM</td>
                 </tr>
                 <tr>
-                  <td><strong>Snacks</strong></td>
-                  <td>5:00 PM - 6:00 PM</td>
-                  <td>5:00 PM - 6:00 PM</td>
+                  <td><strong>Washrooms</strong></td>
+                  <td>Three Times Daily</td>
+                  <td>7:00 AM, 1:00 PM, 8:00 PM</td>
                 </tr>
                 <tr>
-                  <td><strong>Dinner</strong></td>
-                  <td>7:30 PM - 10:00 PM</td>
-                  <td>7:30 PM - 10:00 PM</td>
+                  <td><strong>Common Areas</strong></td>
+                  <td>Daily</td>
+                  <td>10:00 AM - 4:00 PM</td>
+                </tr>
+                <tr>
+                  <td><strong>Garbage Collection</strong></td>
+                  <td>Twice Daily</td>
+                  <td>9:00 AM & 7:00 PM</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          {/* Weekly Menu */}
+          {/* Water Supply Schedule */}
           <div className="content-card">
             <h2>
-              <i className="fas fa-calendar-week"></i> This Week&apos;s Menu
+              <i className="fas fa-tint"></i> Water Supply Timings
             </h2>
-            {currentTimetable ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Area</th>
+                  <th>Morning</th>
+                  <th>Evening</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Hostel Blocks A-D</strong></td>
+                  <td>5:00 AM - 9:00 AM</td>
+                  <td>5:00 PM - 10:00 PM</td>
+                  <td><span className="status-badge resolved">Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Hostel Blocks E-H</strong></td>
+                  <td>5:30 AM - 9:30 AM</td>
+                  <td>5:30 PM - 10:30 PM</td>
+                  <td><span className="status-badge resolved">Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Hot Water (Winter)</strong></td>
+                  <td>6:00 AM - 8:00 AM</td>
+                  <td>6:00 PM - 8:00 PM</td>
+                  <td><span className="status-badge resolved">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Facility Maintenance */}
+          <div className="content-card">
+            <h2>
+              <i className="fas fa-wrench"></i> Facility Maintenance
+            </h2>
+            <div style={{ display: 'grid', gap: '1rem' }}>
               <div className="alert alert-info">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-                  <div>
-                    <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
-                    <span>
-                      <strong>Latest Timetable:</strong> {currentTimetable.filename}
-                    </span>
-                    <br />
-                    <small style={{ color: '#666', marginLeft: '1.5rem' }}>
-                      Updated on {new Date(currentTimetable.uploaded_at).toLocaleDateString()}
-                    </small>
-                  </div>
-                  <a
-                    href={currentTimetable.file_url}
-                    download={currentTimetable.filename}
-                    className="btn btn-primary"
-                    style={{ padding: '0.6rem 1.2rem', textDecoration: 'none', whiteSpace: 'nowrap' }}
-                  >
-                    <i className="fas fa-download"></i> Download PDF
-                  </a>
-                </div>
+                <i className="fas fa-check-circle"></i>
+                <span><strong>Electrical:</strong> Report any electrical issues immediately for safety</span>
               </div>
-            ) : (
               <div className="alert alert-info">
-                <i className="fas fa-info-circle"></i>
-                <span>
-                  No timetable available at the moment. Please check back later or contact the mess administration.
-                </span>
+                <i className="fas fa-check-circle"></i>
+                <span><strong>Plumbing:</strong> Leaks, clogs, and water pressure issues</span>
               </div>
-            )}
+              <div className="alert alert-info">
+                <i className="fas fa-check-circle"></i>
+                <span><strong>Furniture:</strong> Broken beds, chairs, tables, and cupboards</span>
+              </div>
+              <div className="alert alert-info">
+                <i className="fas fa-check-circle"></i>
+                <span><strong>Doors & Windows:</strong> Locks, hinges, and glass repairs</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Important Guidelines */}
+          <div className="content-card">
+            <h2>
+              <i className="fas fa-exclamation-triangle"></i> Important Guidelines
+            </h2>
+            <ul style={{ lineHeight: '1.8', color: '#555' }}>
+              <li>Keep your room accessible during cleaning hours</li>
+              <li>Report all maintenance issues promptly</li>
+              <li>Do not attempt DIY repairs on electrical or plumbing issues</li>
+              <li>Keep valuable items secured during cleaning</li>
+              <li>Cooperate with maintenance staff for efficient service</li>
+              <li>Report leaking taps to conserve water</li>
+            </ul>
           </div>
 
           {/* Submit Complaint */}
@@ -261,9 +294,27 @@ const StudentMess = () => {
       <Modal
         isOpen={showComplaintModal}
         onClose={() => setShowComplaintModal(false)}
-        title={<><i className="fas fa-exclamation-circle"></i> Submit Mess Complaint</>}
+        title={<><i className="fas fa-exclamation-circle"></i> Submit Maintenance Complaint</>}
       >
         <form onSubmit={handleSubmitComplaint}>
+          <div className="form-group">
+            <label htmlFor="category">Category *</label>
+            <select
+              id="category"
+              value={complaintForm.category}
+              onChange={(e) => setComplaintForm({ ...complaintForm, category: e.target.value })}
+              required
+            >
+              <option value="housekeeping">Housekeeping</option>
+              <option value="water">Water Supply</option>
+              <option value="electrical">Electrical</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="furniture">Furniture</option>
+              <option value="doors_windows">Doors & Windows</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
           <div className="form-group">
             <label htmlFor="title">Title *</label>
             <input
@@ -281,7 +332,7 @@ const StudentMess = () => {
             <textarea
               id="description"
               rows="4"
-              placeholder="Detailed description of the issue"
+              placeholder="Detailed description (location, room number, specific issue)"
               value={complaintForm.description}
               onChange={(e) => setComplaintForm({ ...complaintForm, description: e.target.value })}
               required
@@ -322,4 +373,4 @@ const StudentMess = () => {
   );
 };
 
-export default StudentMess;
+export default StudentMaintenance;

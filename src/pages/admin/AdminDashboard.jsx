@@ -44,7 +44,7 @@ const AdminDashboard = () => {
       description: 'Manage complaints, update timings, view reports',
       route: '/admin/mess',
       className: 'mess',
-      pending: 5,
+      pending: complaints.filter((c) => c.dept_id === 'MESS' && c.status === 'pending').length,
     },
     {
       name: 'Transport Management',
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
       description: 'Manage schedules, bookings, and auto services',
       route: '/admin/transport',
       className: 'transport',
-      pending: 8,
+      pending: complaints.filter((c) => c.dept_id === 'TRANSPORT' && c.status === 'pending').length,
     },
     {
       name: 'Network Management',
@@ -60,23 +60,15 @@ const AdminDashboard = () => {
       description: 'Monitor connectivity issues and IT complaints',
       route: '/admin/network',
       className: 'network',
-      pending: 3,
+      pending: complaints.filter((c) => c.dept_id === 'NETWORK' && c.status === 'pending').length,
     },
     {
-      name: 'Housekeeping',
-      icon: 'fa-broom',
-      description: 'Manage cleaning schedules and maintenance',
-      route: '/admin/housekeeping',
-      className: 'housekeeping',
-      pending: 4,
-    },
-    {
-      name: 'Water Management',
-      icon: 'fa-tint',
-      description: 'Monitor water quality and cooler status',
-      route: '/admin/water',
-      className: 'water',
-      pending: 3,
+      name: 'Maintenance',
+      icon: 'fa-tools',
+      description: 'Manage cleaning, water, and facility maintenance',
+      route: '/admin/maintenance',
+      className: 'maintenance',
+      pending: complaints.filter((c) => ['MAINTENANCE', 'HOUSEKEEPING', 'WATER'].includes(c.dept_id) && c.status === 'pending').length,
     },
   ];
 
