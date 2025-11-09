@@ -4,35 +4,16 @@ import './index.css'
 import App from './App.jsx'
 import store from './store/store.js'
 import { Provider } from 'react-redux'
-import Admin from './components/admin/Admin.jsx'
-import Student from './components/student/Student.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { loadUserFromStorage } from './store/authSlice.js'
 
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        path: 'users/admin',
-        element: <Admin />,
-        
-      },
-      {
-        path: 'users/student',
-        element: <Student />,
-      },
-
-    ],
-  },
-  
-])
+// Load user session from localStorage on app start
+store.dispatch(loadUserFromStorage());
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <App />
     </Provider>
   </StrictMode>,
 )
+
