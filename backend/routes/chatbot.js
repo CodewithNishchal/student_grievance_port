@@ -26,6 +26,8 @@ router.post('/message', async (req, res) => {
     // Send query to Dialogflow
     const response = await dialogflowService.detectIntent(currentSessionId, message.trim());
 
+    console.log('Dialogflow response:', response); // Debug log
+
     // Return response with sessionId
     res.json({
       ...response,

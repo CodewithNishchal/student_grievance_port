@@ -1,48 +1,33 @@
 import { SessionsClient } from '@google-cloud/dialogflow';
 import { v4 as uuidv4 } from 'uuid';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 class DialogflowService {
   constructor() {
-    // Construct service account credentials from environment variables
-    const credentials = {
-      type: process.env.GOOGLE_SERVICE_ACCOUNT_TYPE,
-      project_id: process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID,
-      private_key_id: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY_ID,
-      private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL,
-      client_id: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_ID,
-      auth_uri: process.env.GOOGLE_SERVICE_ACCOUNT_AUTH_URI,
-      token_uri: process.env.GOOGLE_SERVICE_ACCOUNT_TOKEN_URI,
-      auth_provider_x509_cert_url: process.env.GOOGLE_SERVICE_ACCOUNT_AUTH_PROVIDER_CERT_URL,
-      client_x509_cert_url: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_CERT_URL,
-      universe_domain: process.env.GOOGLE_SERVICE_ACCOUNT_UNIVERSE_DOMAIN,
-    };
-
-    // Validate that all required credentials are present
-    const requiredFields = [
-      'type', 'project_id', 'private_key_id', 'private_key', 
-      'client_email', 'client_id'
-    ];
+    // Initialize Dialogflow client with service account
+    const keyFilePath = path.resolve(__dirname, '../../service_account.json');
     
-    for (const field of requiredFields) {
-      if (!credentials[field]) {
-        throw new Error(
-          `Missing required service account credential: ${field}. ` +
-          'Please check your backend/.env file.'
-        );
-      }
+    try {
+      this.sessionClient = new SessionsClient({
+        keyFilename: keyFilePath
+      });
+      
+      // Get project ID from service account file
+      this.projectId = process.env.DIALOGFLOW_PROJECT_ID || 'dbms-knrw';
+      this.languageCode = 'en-US';
+      this.isConfigured = true;
+    } catch (error) {
+      console.warn('⚠️  Dialogflow service account not found or invalid.');
+      console.warn('⚠️  Please place service_account.json in the project root.');
+      console.warn('⚠️  The chatbot will return mock responses until configured.');
+      this.isConfigured = false;
+      this.projectId = process.env.DIALOGFLOW_PROJECT_ID || 'dbms-knrw';
+      this.languageCode = 'en-US';
     }
-
-    // Initialize Dialogflow client with credentials from environment
-    this.sessionClient = new SessionsClient({
-      credentials: credentials
-    });
-    
-    // Get project ID from environment
-    this.projectId = process.env.DIALOGFLOW_PROJECT_ID || process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID;
-    this.languageCode = process.env.DIALOGFLOW_LANGUAGE_CODE || 'en-US';
-
-    console.log('✅ Dialogflow service initialized with environment credentials');
   }
 
   /**
@@ -52,6 +37,18 @@ class DialogflowService {
    * @returns {Promise<Object>} Dialogflow response
    */
   async detectIntent(sessionId, query) {
+    // If Dialogflow is not configured, return a helpful message
+    if (!this.isConfigured) {
+      return {
+        success: true,
+        fulfillmentText: 'Hello! I\'m currently in demo mode. Please configure Dialogflow by placing your service_account.json file in the project root and restarting the server. For help, check the CHATBOT_README.md file.',
+        intent: 'demo.mode',
+        confidence: 1.0,
+        parameters: {},
+        allRequiredParamsPresent: true,
+      };
+    }
+
     try {
       // Create session path
       const sessionPath = this.sessionClient.projectAgentSessionPath(

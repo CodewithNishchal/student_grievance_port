@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import chatbotService from '../../services/chatbotService';
 import './Chatbot.css';
 
 const Chatbot = ({ isOpen, onClose }) => {
@@ -42,15 +43,9 @@ const Chatbot = ({ isOpen, onClose }) => {
 
   const initializeSession = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/chatbot/session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await response.json();
-      if (data.success && data.sessionId) {
-        setSessionId(data.sessionId);
+      const sessionId = await chatbotService.createSession();
+      if (sessionId) {
+        setSessionId(sessionId);
       }
     } catch (error) {
       console.error('Error initializing session:', error);
@@ -73,23 +68,20 @@ const Chatbot = ({ isOpen, onClose }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/chatbot/message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: inputMessage,
-          sessionId: sessionId,
-        }),
-      });
+      const data = await chatbotService.sendMessage(inputMessage, sessionId);
+      
+      console.log('Chatbot response:', data); // Debug log
 
-      const data = await response.json();
+      if (data && data.success) {
+        // Handle empty fulfillmentText with a default message
+        const responseText = data.fulfillmentText || 
+          (data.intent === 'Default Fallback Intent' 
+            ? "I'm not sure how to respond to that yet. I'm still learning! You can ask me about mess timings, bus schedules, submitting complaints, or contact information."
+            : "I received your message but don't have a response configured yet.");
 
-      if (data.success && data.fulfillmentText) {
         const botMessage = {
           id: Date.now() + 1,
-          text: data.fulfillmentText,
+          text: responseText,
           sender: 'bot',
           timestamp: new Date(),
           intent: data.intent,
@@ -102,13 +94,16 @@ const Chatbot = ({ isOpen, onClose }) => {
           setSessionId(data.sessionId);
         }
       } else {
-        throw new Error(data.error || 'Failed to get response');
+        console.error('Invalid response data:', data);
+        throw new Error(data?.error || 'Failed to get response');
       }
     } catch (error) {
       console.error('Error sending message:', error);
       const errorMessage = {
         id: Date.now() + 1,
-        text: 'Sorry, I encountered an error. Please try again later.',
+        text: error.message === 'Failed to fetch' 
+          ? 'Cannot connect to server. Please ensure the backend is running on port 3001.' 
+          : 'Sorry, I encountered an error. Please try again later.',
         sender: 'bot',
         timestamp: new Date(),
         isError: true,
