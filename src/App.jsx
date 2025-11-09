@@ -15,6 +15,7 @@ import StudentMess from './pages/student/StudentMess';
 import StudentTransport from './pages/student/StudentTransport';
 import StudentCarpool from './pages/student/StudentCarpool';
 import StudentMaintenance from './pages/student/StudentMaintenance';
+import StudentNetwork from './pages/student/StudentNetwork';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -79,6 +80,14 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={['student']}>
               <StudentMaintenance />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/network"
+          element={
+            <ProtectedRoute allowedRoles={['student']}>
+              <StudentNetwork />
             </ProtectedRoute>
           }
         />
