@@ -503,7 +503,7 @@ export const complaintAPI = {
 
       // 1. Get the user from localStorage
       const storedUser = localStorage.getItem('user');
-      const user = storedUser ? JSON.parse(storedUser) : null;
+      const user = storedUser ? JSON.parse(storedUser) : null;
 
       // 2. Create the final payload, adding the roll number
       // (Based on your StudentLogin, the roll number is stored in the 'name' property)
@@ -512,6 +512,8 @@ export const complaintAPI = {
         // Add the roll number here. You can name the key whatever your backend expects.
         student_roll_number: user ? user.name : null 
       };
+      
+      console.log(finalPayload);
       
       // --- START OF ADDED CODE ---
       // As requested, also POST the new complaint to the Node.js backend
@@ -534,7 +536,7 @@ export const complaintAPI = {
         // Log network errors for the Node.js call
         console.error('Error posting complaint to Node.js backend:', nodeError);
       }
-      // --- END OF ADDED CODE ---
+//       // --- END OF ADDED CODE ---
     
 
       complaintsStore.push(complaintRecord);
