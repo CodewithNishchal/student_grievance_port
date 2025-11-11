@@ -93,3 +93,13 @@ private_key.json
 *.pem
 service_account.json
 **/service_account.json
+
+# Sensitive credentials - NEVER COMMIT
+service_account.json
+**/service_account.json
+private_key.json
+credentials.json
+*.key
+*.pem
+**/*.key
+**/*.pem
