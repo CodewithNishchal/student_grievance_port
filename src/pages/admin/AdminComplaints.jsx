@@ -128,6 +128,7 @@ const AdminComplaints = () => {
                 <thead>
                   <tr>
                     <th>ID</th>
+                    <th>Student Id</th>
                     <th>Complaint</th>
                     <th>Severity</th>
                     <th>Departments</th>
@@ -142,6 +143,7 @@ const AdminComplaints = () => {
                       <td colSpan="7" style={{ textAlign: 'center', padding: '2rem' }}>
                         No complaints found
                       </td>
+                      <td colSpan="8" style={{ textAlign: 'center', padding: '2rem' }}></td>
                     </tr>
                   ) : (
                     complaints.map((complaint) => {
