@@ -91,3 +91,5 @@ credentials.json
 private_key.json
 *.key
 *.pem
+service_account.json
+**/service_account.json
