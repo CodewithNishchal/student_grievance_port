@@ -1,28 +1,26 @@
+# CRITICAL - Sensitive Credentials (NEVER COMMIT)
+service_account.json
+**/service_account.json
+private_key.json
+credentials.json
+complain.py
+config.py
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+**/*.key
+**/*.pem
+
 # Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
-# Environment variables - CRITICAL
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Sensitive credentials - NEVER COMMIT
-service_account.json
-**/service_account.json
-private_key.json
-credentials.json
-config.py
-complain.py
-*.key
-*.pem
-**/*.key
-**/*.pem
+package-lock.json
+yarn.lock
 
 # Build outputs
 dist/
@@ -37,10 +35,13 @@ out/
 *.swo
 *~
 .DS_Store
+*.sublime-project
+*.sublime-workspace
 
 # Logs
 logs/
 *.log
+npm-debug.log*
 
 # Python
 __pycache__/
@@ -67,13 +68,25 @@ wheels/
 .installed.cfg
 *.egg
 .pytest_cache/
+.coverage
+htmlcov/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
 
 # OS
 Thumbs.db
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Misc
 .cache/
 .parcel-cache
 .turbo/
 .turbopack
+.env.local
+.env.*.local
