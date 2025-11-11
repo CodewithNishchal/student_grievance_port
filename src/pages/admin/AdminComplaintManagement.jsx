@@ -412,7 +412,8 @@ const AdminComplaintManagement = () => {
                       </td>
                     </tr>
                   ) : (
-                    filteredComplaints.map((complaint) => {
+                      filteredComplaints.map((complaint) => {
+                      const studentId = complaint.studentId || 'N/A';
                       const adminView = complaint.admin_view || {};
                       const studentView = complaint.student_view || {};
                       const severity = adminView.severity || studentView.severity || 3;
@@ -424,6 +425,7 @@ const AdminComplaintManagement = () => {
                       return (
                         <tr key={complaint.id}>
                           <td>{complaint.id}</td>
+                          <td>{studentId}</td>
                           <td>{complaint.student_id || 'N/A'}</td>
                           <td>{title}</td>
                           <td>
