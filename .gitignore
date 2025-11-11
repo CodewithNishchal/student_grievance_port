@@ -1,92 +1,46 @@
-# CRITICAL - Sensitive Credentials (NEVER COMMIT)
-service_account.json
-**/service_account.json
-private_key.json
-credentials.json
-complain.py
-config.py
-.env
-.env.local
-.env.*.local
-*.key
-*.pem
-**/*.key
-**/*.pem
-
-# Dependencies
-node_modules/
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-package-lock.json
-yarn.lock
+lerna-debug.log*
 
-# Build outputs
-dist/
-build/
-out/
-.next/
+node_modules
+dist
+dist-ssr
+*.local
 
-# IDE and Editor
+# Environment variables
+.env
+.env.local
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+
+# Storage
+complaints_store.json
+
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-.DS_Store
-*.sublime-project
-*.sublime-workspace
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
 
 # OS
-Thumbs.db
 .DS_Store
-.AppleDouble
-.LSOverride
 
-# Misc
-.cache/
-.parcel-cache
-.turbo/
-.turbopack
-.env.local
-.env.*.local
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Service account and secrets
+service_account.json
