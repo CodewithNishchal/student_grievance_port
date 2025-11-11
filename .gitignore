@@ -11,18 +11,18 @@ pnpm-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
-config.py
 
 # Sensitive credentials - NEVER COMMIT
 service_account.json
 **/service_account.json
 private_key.json
 credentials.json
+config.py
+complain.py
 *.key
 *.pem
 **/*.key
 **/*.pem
-complain.py
 
 # Build outputs
 dist/
@@ -77,7 +77,3 @@ Thumbs.db
 .parcel-cache
 .turbo/
 .turbopack
-
-# Submodule for sensitive credentials
-credentials/
-!credentials/.gitkeep
