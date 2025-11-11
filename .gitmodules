@@ -1,0 +1,3 @@
+[submodule "credentials"]
+	path = credentials
+	url = https://github.com/CodewithNishchal/student_grievance_credentials.git
