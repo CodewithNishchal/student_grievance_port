@@ -500,7 +500,43 @@ export const complaintAPI = {
           category: aiCategory,
         }
       };
+
+      // 1. Get the user from localStorage
+      const storedUser = localStorage.getItem('user');
+      const user = storedUser ? JSON.parse(storedUser) : null;
+
+      // 2. Create the final payload, adding the roll number
+      // (Based on your StudentLogin, the roll number is stored in the 'name' property)
+      const finalPayload = {
+        ...complaintRecord,
+        // Add the roll number here. You can name the key whatever your backend expects.
+        student_roll_number: user ? user.name : null 
+      };
       
+      // --- START OF ADDED CODE ---
+      // As requested, also POST the new complaint to the Node.js backend
+      try {
+        const nodeResponse = await fetch(`${NODE_API_URL}/api/report`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(finalPayload), // Send the single record
+        });
+
+        if (!nodeResponse.ok) {
+          // Log an error if the backend post fails, but don't stop the flow
+          console.error('Failed to post complaint to Node.js backend:', await nodeResponse.text());
+        } else {
+          console.log('Complaint successfully posted to Node.js backend.');
+        }
+      } catch (nodeError) {
+        // Log network errors for the Node.js call
+        console.error('Error posting complaint to Node.js backend:', nodeError);
+      }
+      // --- END OF ADDED CODE ---
+    
+
       complaintsStore.push(complaintRecord);
 
       return {
