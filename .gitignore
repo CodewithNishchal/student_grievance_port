@@ -83,3 +83,11 @@ Thumbs.db
 .parcel-cache
 .turbo/
 .turbopack
+
+# Sensitive files
+service_account.json
+**/service_account.json
+credentials.json
+private_key.json
+*.key
+*.pem
